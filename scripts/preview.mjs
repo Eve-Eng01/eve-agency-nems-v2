@@ -7,7 +7,9 @@ const root = join(process.cwd(), "out");
 const types = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".png": "image/png", ".jpg": "image/jpeg", ".woff2": "font/woff2", ".json": "application/json", ".txt": "text/plain", ".xml": "application/xml", ".svg": "image/svg+xml", ".ico": "image/x-icon" };
 
 createServer(async (req, res) => {
-  const path = normalize(decodeURIComponent(new URL(req.url, "http://x").pathname)).replace(/^(\.\.[/\\])+/, "");
+  /* collapse leading slashes ("//" would parse as a host and crash the server) and never throw on a bad path */
+  let path = "/";
+  try { path = normalize(decodeURIComponent(new URL((req.url || "/").replace(/^\/+/, "/"), "http://x").pathname)).replace(/^(\.\.[/\\])+/, ""); } catch {}
   let file = join(root, path);
   try {
     if ((await stat(file)).isDirectory()) file = join(file, "index.html");

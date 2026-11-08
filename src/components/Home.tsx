@@ -77,7 +77,7 @@ export function Work() {
         <ul className="work__grid">
           {WORK.map((c, n) => (
             <li key={c.slug}>
-              <Link href={`/work/${c.slug}/`} className="wcard">
+              <Link href={`/work/${c.slug}/`} className="wcard" aria-label={`${c.client}, ${c.sample ? "sample project" : "live product"}: ${c.sector}`}>
                 <span className="wcard__pic">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   {c.slug === "eve" ? <img src="/work/eve-home-800.jpg" srcSet="/work/eve-home-800.jpg 800w, /work/eve-home.jpg 1600w" sizes="(min-width: 900px) 50vw, 100vw" alt="" width={1600} height={1000} loading="lazy" /> : <ArtFrame id={c.art} early={n < 2} />}
@@ -269,7 +269,7 @@ export function Team() {
       <div className="wrap">
         <header className="team__head">
           <h2 id="team-h" className="title title--md" data-split>Who you work with</h2>
-          <p className="lead">The people on your first call are the people who ship your launch. Hover to say&nbsp;hello.</p>
+          <p className="lead">The people on your first call are the people who ship your launch. Hover or tap to say&nbsp;hello.</p>
         </header>
         <ul className="lineup">
           {team.map((p, i) => (
@@ -279,11 +279,11 @@ export function Team() {
               style={{ "--tone": TONES[i] } as React.CSSProperties}
               onPointerEnter={(e) => { if (e.pointerType === "mouse") figs.current[p.id]?.act(p.action); }}
               onPointerLeave={() => figs.current[p.id]?.rest()}
-              onClick={() => figs.current[p.id]?.act(p.action)}
             >
-              <div className="mate__fig">
-                <Voxel ref={(h) => { figs.current[p.id] = h; }} figure={p.figure} size={560} lift={26} label={`Pixel figure of the ${p.role}`} style={{ "--d": `${i * -0.45}s` } as React.CSSProperties} />
-              </div>
+              {/* a real button, so keyboard and screen reader users can say hello too */}
+              <button type="button" className="mate__fig" aria-label={`${p.role}: say hello`} onClick={() => figs.current[p.id]?.act(p.action)}>
+                <Voxel ref={(h) => { figs.current[p.id] = h; }} figure={p.figure} size={560} lift={26} style={{ "--d": `${i * -0.45}s` } as React.CSSProperties} />
+              </button>
               <div className="mate__floor" />
               <h3 className="mate__role">{p.role}</h3>
               <p className="mate__does">{p.does}</p>

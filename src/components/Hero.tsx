@@ -90,8 +90,8 @@ export function Hero() {
         )}
         <div className="hero__type">
           <h1 id="hero-h" className="hero__h">
-            <span className="hero__l hero__l--1"><span>From idea</span></span>
-            <span className="hero__l hero__l--2"><span>to <em className="hero__sel">launch</em></span></span>
+            <span className="hero__l hero__l--1"><span>From idea</span></span>{" "}
+            <span className="hero__l hero__l--2"><span>to <em className="hero__sel">launch</em></span></span>{" "}
             <span className="hero__l hero__l--3"><span><em>day.</em></span></span>
           </h1>
           <div className="hero__side">

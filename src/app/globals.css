@@ -339,7 +339,7 @@ p, li { text-wrap: pretty; }
 .scard__del li { display: flex; gap: var(--s-100); align-items: baseline; }
 .scard__del li::before { content: ""; flex: none; width: 7px; height: 7px; border-radius: 1px; background: #fff; box-shadow: inset 0 0 0 1.25px var(--p); translate: 0 -1px; }
 .scard__facts { display: flex; flex-wrap: wrap; gap: var(--s-200) var(--s-500); padding-top: var(--s-200); box-shadow: inset 0 1px 0 var(--line-2); width: 100%; }
-.scard__facts dt { font-size: 13px; line-height: 20px; color: var(--dim); }
+.scard__facts dt { font-size: 13px; line-height: 20px; color: var(--muted); }
 .scard__facts dd { display: flex; align-items: center; gap: var(--s-75); font-size: 20px; line-height: 28px; font-weight: 600; }
 .scard__art { border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 1px var(--line), 0 30px 60px -36px rgba(26, 11, 46, 0.5); }
 .art { display: block; width: 100%; aspect-ratio: 16 / 10; background: var(--lilac); }
@@ -368,7 +368,7 @@ p, li { text-wrap: pretty; }
 @media (max-width: 899px) { .team__head { flex-direction: column; align-items: flex-start; gap: var(--s-300); } }
 .lineup { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s-300); }
 .mate { cursor: pointer; }
-.mate__fig { --fh: clamp(190px, 30svh, 280px); height: var(--fh); display: flex; justify-content: center; align-items: flex-end; overflow: hidden; }
+.mate__fig { width: 100%; border-radius: 16px; --fh: clamp(190px, 30svh, 280px); height: var(--fh); display: flex; justify-content: center; align-items: flex-end; overflow: hidden; }
 .mate__fig canvas { height: var(--fh); width: var(--fh); max-width: none; flex: none; animation: bob 3.2s ease-in-out infinite; animation-delay: var(--d, 0s); }
 @keyframes bob { 50% { transform: translateY(-6px); } }
 .mate__floor { position: relative; height: 1px; background: var(--line-2); margin-bottom: var(--s-200); }
@@ -465,6 +465,8 @@ p, li { text-wrap: pretty; }
 .foot__fig canvas { display: block; width: 100%; height: 100%; }
 .foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s-200); margin-top: var(--s-600); padding-block: var(--s-400); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12); font-size: 14px; line-height: 20px; color: rgba(255, 255, 255, 0.6); }
 .foot__legal { display: flex; gap: var(--s-300); }
+/* 24px tall at least, the minimum comfortable target */
+.foot__legal a, .foot__up { min-height: 24px; display: inline-flex; align-items: center; }
 .foot__up { display: inline-flex; align-items: center; gap: var(--s-75); color: rgba(255, 255, 255, 0.6); transition: color 200ms ease; }
 @media (max-width: 1023px) { .foot__top { grid-template-columns: 1fr; align-items: start; } }
 @media (max-width: 759px) {
@@ -485,7 +487,8 @@ p, li { text-wrap: pretty; }
 .wgrid__in { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-700) var(--s-400); }
 .wcard--wide { grid-column: 1 / -1; }
 @media (max-width: 759px) { .wgrid__in { grid-template-columns: 1fr; } .wcard--wide .wcard__pic { aspect-ratio: 16 / 10; } }
-.case__hero { border-radius: 28px; overflow: hidden; aspect-ratio: 16 / 9; background: var(--lilac); }
+/* the pieces are drawn 16:10, so the frame matches (nothing cropped) and never grows taller than the screen */
+.case__hero { width: min(100%, calc((100svh - 160px) * 1.6)); margin-inline: auto; border-radius: 28px; overflow: hidden; aspect-ratio: 16 / 10; background: var(--lilac); }
 .case__hero img, .case__hero canvas { width: 100%; height: 100%; object-fit: cover; object-position: top; aspect-ratio: auto; }
 .case { padding-block: var(--section); }
 .case__grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--s-300); row-gap: var(--s-600); margin-bottom: var(--s-800); }

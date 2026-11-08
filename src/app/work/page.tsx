@@ -17,7 +17,7 @@ export default function WorkIndex() {
             <Link key={c.slug} href={`/work/${c.slug}/`} className={i === 0 ? "wcard wcard--wide" : "wcard"}>
               <span className="wcard__pic" data-reveal>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                {c.slug === "eve" ? <img src="/work/eve-home-800.jpg" srcSet="/work/eve-home-800.jpg 800w, /work/eve-home.jpg 1600w" sizes="(min-width: 900px) 50vw, 100vw" alt="" width={1600} height={1000} loading="lazy" /> : <ArtFrame id={c.art} />}
+                {c.slug === "eve" ? <img src="/work/eve-home-800.jpg" srcSet="/work/eve-home-800.jpg 800w, /work/eve-home.jpg 1600w" sizes={i === 0 ? "(min-width: 760px) calc(100vw - 96px), 100vw" : "(min-width: 760px) 50vw, 100vw"} alt="" width={1600} height={1000} loading="lazy" /> : <ArtFrame id={c.art} />}
               </span>
               <span className="wcard__row">
                 <span className="wcard__name">{c.client} {c.sample ? <span className="tag">Sample</span> : <span className="tag tag--live">Live</span>}</span>
