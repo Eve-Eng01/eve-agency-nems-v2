@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+shots
+.taste-skill
+*.tsbuildinfo
+next-env.d.ts
+
+# local secrets
+.env*.local
+.env
+
+# design review screenshots (local only)
+.impeccable/review/

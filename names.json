@@ -1,0 +1,37 @@
+{
+  "note": "Coined sample client names. All are invented for pre-launch samples and tagged as samples in the interface.",
+  "searched": true,
+  "date": "2026-11-07",
+  "names": [
+    {
+      "name": "Zuriko",
+      "query": "Zuriko invoice app company",
+      "result": "No business of that name found."
+    },
+    {
+      "name": "Palmgate Lettings",
+      "query": "Palmgate Lettings Lekki property",
+      "result": "No business of that name found."
+    },
+    {
+      "name": "Ashgrove Roasters",
+      "query": "Ashgrove Roasters coffee London",
+      "result": "No London roaster of that name found. An unrelated Home Cafe Ashgrove exists in Queensland."
+    },
+    {
+      "name": "Tolumi",
+      "query": "Tolumi skincare brand",
+      "result": "No business of that name found. Tula and Tolpa are different names."
+    },
+    {
+      "name": "Quillbay",
+      "query": "Quillbay logistics company",
+      "result": "No business of that name found."
+    },
+    {
+      "name": "KestrelPay",
+      "query": "Kestrelpay payments fintech company",
+      "result": "Rejected: appears on a third-party template page."
+    }
+  ]
+}
