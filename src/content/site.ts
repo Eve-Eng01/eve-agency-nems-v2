@@ -5,6 +5,8 @@ export const site = {
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello@evestudio.example",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "",
   booking: process.env.NEXT_PUBLIC_BOOKING_URL || "",
+  /* the Cal.com event the contact page embeds; set NEXT_PUBLIC_CAL_LINK to change it, or to "" for none */
+  calLink: process.env.NEXT_PUBLIC_CAL_LINK ?? "nwakeze-anthony-eve-studio/30min",
   formEndpoint: process.env.NEXT_PUBLIC_FORM_ENDPOINT || "",
   plausible: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || "",
   /* Add real accounts here: { label: "Instagram", href: "https://..." }. Empty until supplied. */
@@ -12,7 +14,9 @@ export const site = {
   /* false while the email is still the .example placeholder: the address is then never printed */
   get emailReady() { return !this.email.endsWith(".example"); },
   description:
-    "Eve Studio is one team for founders and growing companies: strategy, brand, product and launch, on one timeline.",
+    "Eve Studio designs and builds apps, websites, brands and launch campaigns for founders. One plan and a fixed quote before any work starts.",
+  /* true once NEXT_PUBLIC_SITE_URL holds the real domain; canonical links, the sitemap and share cards all use it */
+  get urlReady() { return !this.url.includes(".example"); },
 };
 
 export const nav = [

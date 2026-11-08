@@ -4,15 +4,19 @@ import { notFound } from "next/navigation";
 import { ArrowRight, ArrowUpRight } from "@/components/icons";
 import { cases, formatMetric, getCase } from "@/content/cases";
 import { getService } from "@/content/services";
+import { share } from "@/lib/share";
 import { PageHero } from "@/components/PageHero";
 import { ArtFrame } from "@/components/ArtFrame";
+import { site } from "@/content/site";
 
 export const dynamicParams = false;
 export const generateStaticParams = () => cases.map((c) => ({ slug: c.slug }));
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const c = getCase((await params).slug);
-  return c ? { title: c.client, description: c.summary } : {};
+  if (!c) return {};
+  const title = `${c.client}: ${c.sector.toLowerCase()} ${c.sample ? "sample project" : "case study"}`;
+  return { title, description: c.summary, ...share(`/work/${c.slug}/`, `${title} | Eve Studio`, c.summary) };
 }
 
 export default async function CasePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -23,6 +27,15 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
   const svc = getService(c.services[0]);
   return (
     <article>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+          { "@type": "ListItem", position: 2, name: "Work", item: `${site.url}/work/` },
+          { "@type": "ListItem", position: 3, name: c.client, item: `${site.url}/work/${c.slug}/` },
+        ],
+      }) }} />
       <PageHero
         title={c.client}
         lead={c.summary}

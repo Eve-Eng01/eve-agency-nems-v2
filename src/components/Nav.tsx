@@ -42,7 +42,10 @@ export function Nav() {
     return () => removeEventListener("scroll", on);
   }, []);
 
+  /* the menu sits beside the bar, not inside it: the bar's frosted blur would otherwise
+     become the menu's frame once the page scrolls, shrinking it to the bar's height */
   return (
+    <>
     <header className={solid ? "nav is-solid" : "nav"}>
       <a className="skip" href="#main">Skip to content</a>
       <div className="nav__bar">
@@ -59,6 +62,7 @@ export function Nav() {
           <span /><span />
         </button>
       </div>
+    </header>
       <div id="menu" className="menu" hidden={!open}>
         <nav aria-label="Menu">
           {[{ href: "/", label: "Home" }, ...links, { href: "/contact/", label: "Book a free call" }].map((l, i) => (
@@ -66,6 +70,6 @@ export function Nav() {
           ))}
         </nav>
       </div>
-    </header>
+    </>
   );
 }

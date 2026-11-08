@@ -18,10 +18,17 @@ Then open http://localhost:4175. The other two sites keep ports 4173 and 4174, s
 
 Set these in `.env.local` (see `.env.example`):
 
-- `NEXT_PUBLIC_BOOKING_URL`: the booking page, embedded on the contact page. Until it is set, that page asks visitors to email two times that suit them.
-- `NEXT_PUBLIC_CONTACT_EMAIL`: the lead inbox. Until it is set the address is never shown: the copy-email buttons and email lines are hidden, and the contact page points to the brief form instead. WhatsApp and socials likewise appear only once set.
+- `NEXT_PUBLIC_SITE_URL`: **the real domain, most important for search.** Canonical links, the sitemap, robots.txt, structured data and share cards are all built from it. Until it is set they point at `evestudio.example` and the build prints a `[seo]` warning.
+- `NEXT_PUBLIC_CAL_LINK`: the Cal.com event embedded on the contact page. It defaults to `nwakeze-anthony-eve-studio/30min`; set it to an empty value to fall back to `NEXT_PUBLIC_BOOKING_URL` (any booking page, shown in a frame) or, with neither, to the brief form.
+- `NEXT_PUBLIC_CONTACT_EMAIL`: the lead inbox. Until it is set the address is never shown: the copy-email buttons and email lines are hidden. WhatsApp and socials likewise appear only once set.
 - `NEXT_PUBLIC_FORM_ENDPOINT`: where the brief form posts. Until then it opens an email.
-- `NEXT_PUBLIC_WHATSAPP`, `NEXT_PUBLIC_SITE_URL`, and socials in `src/content/site.ts`.
+- `NEXT_PUBLIC_WHATSAPP`, and socials in `src/content/site.ts` (they also feed the structured data as `sameAs`).
+
+## Search
+
+- Every indexable page has its own title, description, canonical link and share card (`src/lib/share.ts`; the image is `public/og.png`). Privacy and terms are `noindex`, as is the 404.
+- Structured data: the Organization (with its services, no prices since those are samples) and the WebSite on every page, the questions as FAQPage on the home page, and a breadcrumb on each project.
+- `sitemap.xml` lists the home, work, contact and project pages; `robots.txt` points to it. After launch, add the domain to Google Search Console and submit the sitemap.
 
 Replace the samples in `src/content/`: every project but Eve, every figure on them and the service prices are invented and tagged as samples on the page. Eve is real.
 

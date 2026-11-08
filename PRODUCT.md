@@ -25,7 +25,8 @@ From idea to launch day. The product, the brand and the campaign get planned tog
 ## Capabilities and Constraints
 
 - Primary conversion: Book a free call. Secondary: the brief form, email.
-- Undecided: booking link, lead email, form endpoint, WhatsApp, socials, real prices. All are environment or content values.
+- Booking runs through Cal.com, embedded on the contact page.
+- Undecided: domain, lead email, form endpoint, WhatsApp, socials, real prices. All are environment or content values.
 - This site lives in `site-light/`. The dark cinematic version stays in `new-site/`, and the original site in the parent folder; both stay untouched.
 
 ## Brand Commitments

@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "@/components/icons";
 import { cases, formatMetric } from "@/content/cases";
+import { share } from "@/lib/share";
 import { PageHero } from "@/components/PageHero";
 import { ArtFrame } from "@/components/ArtFrame";
 
-export const metadata: Metadata = { title: "Work", description: "Apps, brands, sites and campaigns by Eve Studio, with what each one did." };
+export const metadata: Metadata = {
+  title: "Work: apps, websites, brands and campaigns",
+  description: "Projects by Eve Studio: Eve, our live events platform, and sample projects in AI apps, websites, brand identity, UGC video and launch planning.",
+  ...share("/work/", "Work | Eve Studio", "Eve, our live events platform, and sample projects in AI apps, websites, brand identity, UGC video and launch planning."),
+};
 
 export default function WorkIndex() {
   return (

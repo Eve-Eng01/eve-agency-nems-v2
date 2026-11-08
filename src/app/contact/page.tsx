@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "@/components/icons";
+import { share } from "@/lib/share";
 import { PageHero } from "@/components/PageHero";
 import { BriefForm } from "@/components/BriefForm";
 import { CopyEmail } from "@/components/Footer";
+import { CalEmbed } from "@/components/CalEmbed";
 import { site } from "@/content/site";
 
-export const metadata: Metadata = { title: "Book a free call", description: "Book thirty free minutes with Eve Studio, or send a project brief." };
+export const metadata: Metadata = {
+  title: "Book a free call",
+  description: "Book a free 30 minute call with Eve Studio. You leave with a scope, a price range and a start date for your app, website, brand or launch, whether or not you hire us.",
+  ...share("/contact/", "Book a free call | Eve Studio", "Thirty minutes, free. Leave with a scope, a price range and a start date for your app, website, brand or launch."),
+};
 
 export default function Contact() {
   return (
@@ -15,7 +21,10 @@ export default function Contact() {
         <div className="wrap contact__grid">
           <section id="book" aria-labelledby="book-h" className="contact__book">
             <h2 id="book-h" className="h-5">Book a time</h2>
-            {site.booking ? (
+            {site.calLink && <p className="contact__note">Pick a day and a time that suits you. You get a calendar invite and a video link straight away.</p>}
+            {site.calLink ? (
+              <CalEmbed />
+            ) : site.booking ? (
               <iframe src={site.booking} title="Book a call with Eve Studio" loading="lazy" className="contact__frame" />
             ) : !site.emailReady ? (
               <div className="notice">
@@ -31,8 +40,11 @@ export default function Contact() {
             )}
             {site.whatsapp ? <p><a className="link" href={`https://wa.me/${site.whatsapp}`}>Message us on WhatsApp</a></p> : null}
           </section>
-          <section id="brief" aria-labelledby="brief-h">
-            <h2 id="brief-h" className="h-5">Or send a brief</h2>
+          <section id="brief" aria-labelledby="brief-h" className="contact__brief">
+            <div>
+              <h2 id="brief-h" className="h-5">Or send a brief</h2>
+              <p className="contact__note">Rather write it down first? Send a line about the idea and we reply within one working day.</p>
+            </div>
             <BriefForm />
           </section>
         </div>
