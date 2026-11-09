@@ -1,4 +1,5 @@
 import type { ArtId } from "@/art/draw";
+import type { Pic } from "@/content/cases";
 
 export type Service = {
   slug: string;
@@ -9,6 +10,8 @@ export type Service = {
   timeline: string;
   from: string;
   art: ArtId;
+  /* a real picture of the work, used in place of the drawn sample when set */
+  pic?: Pic;
   caseSlug: string;
   steps: { title: string; body: string }[];
 };
@@ -67,12 +70,13 @@ export const services: Service[] = [
     slug: "brand-and-logo",
     name: "Brand and logo",
     line: "A name, a mark and rules your team can follow.",
-    intro: "A logo that survives a 12 mm stamp, with the colours, type and templates to use it well once we're gone.",
+    intro: "A logo that holds from a billboard down to a 16px browser tab, with the colours, type and templates to use it well once we're gone.",
     deliverables: ["Logo and mark in every format", "Colour and type system", "Packaging or deck templates", "A short brand guide"],
     timeline: "3 to 6 weeks",
     from: "$2,000",
     art: "logo",
-    caseSlug: "ashgrove",
+    pic: { src: "/work/dreambot-system.jpg", src800: "/work/dreambot-system-800.jpg", alt: "The Dreambot identity: logo, six colours, the symbol at every size and two typefaces" },
+    caseSlug: "dreambot",
     steps: [
       { title: "Workshop", body: "Two hours with the people who sell your product every day." },
       { title: "Three routes", body: "Three real directions on real packaging or screens, never on a blank page." },

@@ -224,7 +224,7 @@ Deep panel. The call to book and three link columns, then "Eve Studio" in expand
 
 ### Buttons and tags
 
-Primary purple pill, ghost hairline pill, ink pill on purple grounds; all lift 2px on hover and press to 0.97. Every sample project and price carries a Sample tag; Eve carries Live.
+Primary purple pill, ghost hairline pill, ink pill on purple grounds; all lift 2px on hover and press to 0.97. Every sample project and price carries a Sample tag; Eve carries Live and Dreambot carries Client work.
 
 ## Do's and Don'ts
 

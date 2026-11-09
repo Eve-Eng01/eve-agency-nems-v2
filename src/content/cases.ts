@@ -1,5 +1,8 @@
 import type { ArtId } from "@/art/draw";
 
+/* A real picture of the work (used in place of a drawn sample when present) */
+export type Pic = { src: string; src800: string; alt: string };
+
 export type Metric = { value: number; prefix?: string; suffix?: string; decimals?: number; label: string };
 
 export type CaseStudy = {
@@ -13,15 +16,19 @@ export type CaseStudy = {
   metrics: Metric[];
   art: ArtId;
   art2: ArtId;
+  pic?: Pic;
+  pic2?: Pic;
   challenge: string;
   approach: string[];
   outcome: string;
   duration: string;
+  /* shown in place of the duration line when set, e.g. "Delivered November 2026" */
+  when?: string;
   sample: boolean;
   live?: string;
 };
 
-/* Eve is real and live. Every other case is an invented sample, tagged in the interface. */
+/* Eve (our own product) and Dreambot (client work) are real. Every other case is an invented sample, tagged in the interface. */
 export const cases: CaseStudy[] = [
   {
     slug: "eve",
@@ -38,6 +45,7 @@ export const cases: CaseStudy[] = [
     ],
     art: "eve-home",
     art2: "eve-events",
+    pic: { src: "/work/eve-home.jpg", src800: "/work/eve-home-800.jpg", alt: "Eve's home screen: every night starts on Eve, with go out, host and get booked" },
     challenge:
       "Going out, hosting and getting booked usually happen across three different places. Guests need tickets, hosts need vendors, and vendors need to get paid.",
     approach: [
@@ -49,6 +57,36 @@ export const cases: CaseStudy[] = [
     duration: "Ongoing",
     sample: false,
     live: "https://www.joineve.app/",
+  },
+  {
+    slug: "dreambot",
+    client: "Dreambot",
+    sector: "AI lead generation",
+    services: ["brand-and-logo"],
+    tags: ["Brand", "Logo", "Product UI"],
+    summary: "Logo, colour, type and product UI for an AI platform whose agents find leads and book meetings overnight.",
+    headline: { value: 46, label: "production files in the logo kit" },
+    metrics: [
+      { value: 3, label: "directions explored before one was chosen" },
+      { value: 6, label: "colours, each with one job, every text pair measured" },
+      { value: 46, label: "production files: SVG, PNG, web icons, a React component and CSS tokens" },
+    ],
+    art: "brand",
+    art2: "logo",
+    pic: { src: "/work/dreambot-hero.jpg", src800: "/work/dreambot-hero-800.jpg", alt: "The Dreambot logo over Overnight Drift, a generative pattern of blue traces drifting toward an orange sun at the horizon" },
+    pic2: { src: "/work/dreambot-system.jpg", src800: "/work/dreambot-system-800.jpg", alt: "The Dreambot identity: the stacked logo on Night, six brand colours, the Daybreak D symbol from app icon down to 16px, and the two typefaces" },
+    challenge:
+      "Dreambot's agents find buyers, write to each one and handle replies while the team sleeps. The brand had to feel safe to trust with a company's inbox, not like another bot, for founders and growth leads at B2B companies of 10 to 200 people.",
+    approach: [
+      "We explored three directions and chose Night Shift: you sleep, it works, you wake to replies. Night ink with one sunrise orange.",
+      "We drew the Daybreak D, a sun rising inside a D, on a 256 unit grid, with a heavier cut below 24px so it still reads on a 16px browser tab.",
+      "We gave six colours one job each and measured every text pair, so orange only ever marks results. Bricolage Grotesque sets the headlines and Figtree the text, both free.",
+      "We made Overnight Drift, a generative pattern that traces an overnight run, and shipped a 46 file logo kit ready to drop into the product.",
+    ],
+    outcome: "One symbol, six colours and two typefaces now carry Dreambot across the product, the website, a business card and social, with every file the team needs to build on.",
+    duration: "",
+    when: "Delivered November 2026",
+    sample: false,
   },
   {
     slug: "zuriko",
@@ -100,32 +138,6 @@ export const cases: CaseStudy[] = [
     ],
     outcome: "Enquiries rose 41%, and agents reported far fewer calls from people the property could not suit.",
     duration: "6 weeks",
-    sample: true,
-  },
-  {
-    slug: "ashgrove",
-    client: "Ashgrove Roasters",
-    sector: "Food and drink",
-    services: ["brand-and-logo", "web-and-product"],
-    tags: ["Brand", "Logo", "Packaging"],
-    summary: "A new identity and packaging system for a small coffee roaster moving into wholesale.",
-    headline: { value: 2.3, suffix: "x", decimals: 1, label: "wholesale accounts within six months" },
-    metrics: [
-      { value: 2.3, suffix: "x", decimals: 1, label: "wholesale accounts within six months" },
-      { value: 14, label: "packaging lines rolled out in one run" },
-      { value: 5, suffix: " weeks", label: "from first workshop to print files" },
-    ],
-    art: "brand",
-    art2: "logo",
-    challenge:
-      "Ashgrove's coffee was winning tastings, but the bags looked homemade beside the competition on a café shelf. Buyers kept asking if they could supply at volume.",
-    approach: [
-      "We drew one ash leaf mark that still reads when stamped on a kraft bag at 12 mm.",
-      "We built a colour code by roast, so a barista can spot the right bag across a room.",
-      "We prepared a wholesale deck and order site in the same five weeks as the identity.",
-    ],
-    outcome: "Wholesale accounts grew 2.3 times in six months, and the new bags cost less to print than the old ones.",
-    duration: "5 weeks",
     sample: true,
   },
   {
@@ -181,6 +193,10 @@ export const cases: CaseStudy[] = [
     sample: true,
   },
 ];
+
+/* how the interface labels a case */
+export const caseTag = (c: CaseStudy) => (c.sample ? "Sample" : c.live ? "Live" : "Client work");
+export const caseKind = (c: CaseStudy) => (c.sample ? "Sample project" : c.live ? "Live product" : "Client project");
 
 export const getCase = (slug: string) => cases.find((c) => c.slug === slug);
 

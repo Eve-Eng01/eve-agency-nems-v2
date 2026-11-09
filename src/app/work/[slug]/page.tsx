@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ArrowUpRight } from "@/components/icons";
-import { cases, formatMetric, getCase } from "@/content/cases";
+import { caseKind, cases, formatMetric, getCase } from "@/content/cases";
 import { getService } from "@/content/services";
 import { share } from "@/lib/share";
 import { PageHero } from "@/components/PageHero";
 import { ArtFrame } from "@/components/ArtFrame";
+import { WorkPic } from "@/components/WorkPic";
 import { site } from "@/content/site";
 
 export const dynamicParams = false;
@@ -15,7 +16,7 @@ export const generateStaticParams = () => cases.map((c) => ({ slug: c.slug }));
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const c = getCase((await params).slug);
   if (!c) return {};
-  const title = `${c.client}: ${c.sector.toLowerCase()} ${c.sample ? "sample project" : "case study"}`;
+  const title = `${c.client}: ${c.sector[0].toLowerCase() + c.sector.slice(1)} ${c.sample ? "sample project" : "case study"}`.replace(/: ai /i, ": AI ");
   return { title, description: c.summary, ...share(`/work/${c.slug}/`, `${title} | Eve Studio`, c.summary) };
 }
 
@@ -39,14 +40,14 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
       <PageHero
         title={c.client}
         lead={c.summary}
-        kicker={<>{c.sample ? <span className="tag">Sample project</span> : <span className="tag tag--live">Live product</span>}<span>{c.sector}</span><span>{c.tags.join(", ")}</span></>}
+        kicker={<><span className={c.sample ? "tag" : "tag tag--live"}>{caseKind(c)}</span><span>{c.sector}</span><span>{c.tags.join(", ")}</span></>}
       >
         {c.live && <a className="btn btn--primary" href={c.live} target="_blank" rel="noreferrer">Visit joineve.app <ArrowUpRight size={18} weight="bold" aria-hidden="true" /></a>}
       </PageHero>
       <div className="wrap">
         <div className="case__hero" data-reveal>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          {c.slug === "eve" ? <img src="/work/eve-home.jpg" alt="Eve's home screen: every night starts on Eve, with go out, host and get booked" /> : <ArtFrame id={c.art} />}
+          <WorkPic pic={c.pic} art={c.art} sizes="(min-width: 760px) calc(100vw - 96px), 100vw" describe early />
         </div>
       </div>
       <section className="case">
@@ -59,11 +60,13 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           <div>
             <p className="case__lead">{c.outcome}</p>
             {!c.live && <ul className="case__metrics">{c.metrics.map((m) => <li key={m.label}><b>{formatMetric(m)}</b> {m.label}</li>)}</ul>}
-            <p className="case__dur">Time: {c.duration}</p>
+            <p className="case__dur">{c.when ?? `Time: ${c.duration}`}</p>
           </div>
         </div>
         {/* Eve's second screen lists real venues and cities, which the site does not show */}
-        {c.slug !== "eve" && <div className="wrap"><div className="case__art" data-reveal><ArtFrame id={c.art2} /></div></div>}
+        {c.pic2
+          ? <div className="wrap"><div className="case__art" data-reveal><WorkPic pic={c.pic2} art={c.art2} sizes="(min-width: 760px) calc(100vw - 96px), 100vw" describe /></div></div>
+          : c.sample && <div className="wrap"><div className="case__art" data-reveal><ArtFrame id={c.art2} /></div></div>}
       </section>
       <section className="case__next">
         <div className="wrap case__nextgrid">

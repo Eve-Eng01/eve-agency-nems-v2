@@ -2,12 +2,13 @@
 import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { ArrowRight, ArrowUpRight, Sparkle } from "@/components/icons";
-import { cases } from "@/content/cases";
+import { caseKind, caseTag, cases } from "@/content/cases";
 import { processSteps, services, type Service } from "@/content/services";
 import { allFaqs, site } from "@/content/site";
 import { team } from "@/content/team";
 import { motion, reduced } from "@/lib/motion";
 import { ArtFrame } from "./ArtFrame";
+import { WorkPic } from "./WorkPic";
 import { Voxel, type VoxelHandle } from "./Voxel";
 
 /* Eve is real but not the headline: it sits third, among the work */
@@ -72,17 +73,17 @@ export function Work() {
       <div className="wrap">
         <header className="work__head">
           <h2 id="work-h" className="title" data-split>Selected work</h2>
-          <p className="work__note">Sample projects that show how we work, and Eve, our own product, which is live.</p>
+          <p className="work__note">Dreambot, a brand for an AI startup, Eve, our own live product, and sample projects that show how we work.</p>
         </header>
         <ul className="work__grid">
           {WORK.map((c, n) => (
             <li key={c.slug}>
-              <Link href={`/work/${c.slug}/`} className="wcard" aria-label={`${c.client}, ${c.sample ? "sample project" : "live product"}: ${c.sector}`}>
+              <Link href={`/work/${c.slug}/`} className="wcard" aria-label={`${c.client}, ${caseKind(c).toLowerCase()}: ${c.sector}`}>
                 <span className="wcard__pic">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  {c.slug === "eve" ? <img src="/work/eve-home-800.jpg" srcSet="/work/eve-home-800.jpg 800w, /work/eve-home.jpg 1600w" sizes="(min-width: 900px) 50vw, 100vw" alt="" width={1600} height={1000} loading="lazy" /> : <ArtFrame id={c.art} early={n < 2} />}
+                  <WorkPic pic={c.pic} art={c.art} early={n < 2} />
                 </span>
-                <span className="wcard__meta">{c.sector} · {c.tags.slice(0, 2).join(", ")} {c.sample ? <span className="tag">Sample</span> : <span className="tag tag--live">Live</span>}</span>
+                <span className="wcard__meta">{c.sector} · {c.tags.slice(0, 2).join(", ")} <span className={c.sample ? "tag" : "tag tag--live"}>{caseTag(c)}</span></span>
                 <span className="wcard__row"><span className="wcard__name">{c.client}</span><ArrowUpRight size={24} weight="bold" aria-hidden="true" /></span>
               </Link>
             </li>
@@ -236,7 +237,7 @@ export function Services() {
                 </dl>
                 <Link href={`/contact/?service=${x.slug}`} className="link">Ask about {ask(x.name)} <ArrowRight size={16} weight="bold" aria-hidden="true" /></Link>
               </div>
-              <div className="scard__art"><ArtFrame id={x.art} /></div>
+              <div className="scard__art"><WorkPic pic={x.pic} art={x.art} sizes="(min-width: 900px) 45vw, 100vw" /></div>
             </li>
           ))}
         </ol>
@@ -355,7 +356,7 @@ export function PlanIt() {
             <p className="pcard__big">{plan.s.name}</p>
             <ul>{plan.s.deliverables.map((d) => <li key={d}>{d}</li>)}</ul>
           </div>
-          <div className="pcard pcard--pic"><ArtFrame key={plan.s.slug} id={plan.s.art} /></div>
+          <div className="pcard pcard--pic"><WorkPic key={plan.s.slug} pic={plan.s.pic} art={plan.s.art} sizes="(min-width: 1100px) 25vw, 50vw" /></div>
           <div className="pcard">
             <h3>How long</h3>
             <p className="pcard__big">{plan.s.timeline}</p>

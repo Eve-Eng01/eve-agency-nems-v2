@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "@/components/icons";
-import { cases, formatMetric } from "@/content/cases";
+import { cases, caseTag, formatMetric } from "@/content/cases";
 import { share } from "@/lib/share";
 import { PageHero } from "@/components/PageHero";
-import { ArtFrame } from "@/components/ArtFrame";
+import { WorkPic } from "@/components/WorkPic";
 
 export const metadata: Metadata = {
   title: "Work: apps, websites, brands and campaigns",
@@ -15,17 +15,17 @@ export const metadata: Metadata = {
 export default function WorkIndex() {
   return (
     <>
-      <PageHero title="The work" lead="Eve is our own product, and it is live. The other five are sample projects that show how we work, until client work is cleared to publish." />
+      <PageHero title="The work" lead="Dreambot is client work and Eve is our own product, live now. The other four are sample projects that show how we work, until more client work is cleared to publish." />
       <section className="wgrid" aria-label="All projects">
         <div className="wrap wgrid__in">
           {cases.map((c, i) => (
             <Link key={c.slug} href={`/work/${c.slug}/`} className={i === 0 ? "wcard wcard--wide" : "wcard"}>
               <span className="wcard__pic" data-reveal>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                {c.slug === "eve" ? <img src="/work/eve-home-800.jpg" srcSet="/work/eve-home-800.jpg 800w, /work/eve-home.jpg 1600w" sizes={i === 0 ? "(min-width: 760px) calc(100vw - 96px), 100vw" : "(min-width: 760px) 50vw, 100vw"} alt="" width={1600} height={1000} loading="lazy" /> : <ArtFrame id={c.art} />}
+                <WorkPic pic={c.pic} art={c.art} sizes={i === 0 ? "(min-width: 760px) calc(100vw - 96px), 100vw" : "(min-width: 760px) 50vw, 100vw"} />
               </span>
               <span className="wcard__row">
-                <span className="wcard__name">{c.client} {c.sample ? <span className="tag">Sample</span> : <span className="tag tag--live">Live</span>}</span>
+                <span className="wcard__name">{c.client} <span className={c.sample ? "tag" : "tag tag--live"}>{caseTag(c)}</span></span>
                 <ArrowUpRight size={22} weight="bold" aria-hidden="true" />
               </span>
               <span className="wcard__sum">{c.summary}</span>
