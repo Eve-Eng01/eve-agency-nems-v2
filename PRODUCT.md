@@ -26,14 +26,14 @@ From idea to launch day. The product, the brand and the campaign get planned tog
 
 - Primary conversion: Book a free call. Secondary: the brief form, email.
 - Booking runs through Cal.com, embedded on the contact page.
-- Undecided: domain, lead email, form endpoint, WhatsApp, socials, real prices. All are environment or content values.
+- Undecided: domain, lead email, form endpoint, WhatsApp, socials. All are environment or content values.
 - This site lives in `site-light/`. The dark cinematic version stays in `new-site/`, and the original site in the parent folder; both stay untouched.
 
 ## Brand Commitments
 
 - Text name "Eve Studio". The logo reads "evé" and is never redrawn or recoloured.
 - White ground, deep aubergine ink #1A0B2E, Eve purple #8800FF for accents, lines and the main button. Aubergine is the one depth colour.
-- All prices in USD. The site does not mention locations.
+- No prices anywhere on the site: every project gets a fixed quote after a free call, and the brief form asks when, not how much. The site does not mention locations.
 - The team appears as five roles drawn as pixel figures: Founder and PM, Technology, Mobile Engineer, Design, Creative Director. Names are not shown, and the head count is not a selling point.
 - Copy: sentence case in the source (display type is set in caps by CSS), no hyphens inside sentences, no exclamation marks, no filler words. "Fixed quote" is the one term for the price promise.
 - Eve is one piece of work among many, not the focus.
@@ -41,7 +41,7 @@ From idea to launch day. The product, the brand and the campaign get planned tog
 
 ## Evidence on Hand
 
-Eve (joineve.app) is real and live, shown with real screenshots. Dreambot is real client work (a brand identity for an AI lead generation platform, delivered November 2026), shown with pictures made from its own logo kit and pattern. Every other client, figure, quote and price is an invented sample and is tagged as one in the interface.
+Eve (joineve.app) is real and live, shown with real screenshots. Dreambot is real client work (a brand identity for an AI lead generation platform, delivered November 2026), shown with pictures made from its own logo kit and pattern. Every other client and figure is an invented sample and is tagged as one in the interface.
 
 ## Product Principles
 

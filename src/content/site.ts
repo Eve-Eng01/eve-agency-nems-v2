@@ -32,8 +32,8 @@ export const faqs = [
     a: "Usually within two weeks of the discovery call. We tell you the exact start date in the proposal, and it does not move once you sign.",
   },
   {
-    q: "What does a project cost?",
-    a: "Each service page shows a starting price. After the call you get a fixed quote for the scope we agreed, so the number only changes if you change the scope.",
+    q: "How is a project priced?",
+    a: "With a fixed quote for the scope we agree on the call, sent before any work starts. The number only changes if you change the scope.",
   },
   {
     q: "Do I have to buy everything from you?",
@@ -86,7 +86,7 @@ export const quotes = [
 
 /* The two questions most callers ask first, then the rest. */
 export const allFaqs = [
-  { q: "What happens on the call?", a: "Thirty minutes with the founder. You talk us through the idea, we ask about buyers, budget and dates, and you leave with a scope, a price range and a start date." },
+  { q: "What happens on the call?", a: "Thirty minutes with the founder. You talk us through the idea, we ask about buyers and dates, and you leave with a scope and a start date. Your fixed quote follows before any work starts." },
   { q: "We only have an idea. Is that too early?", a: "No. Most projects start as a paragraph. The first week turns it into a written scope you can take anywhere, including to other studios." },
   ...faqs,
 ];

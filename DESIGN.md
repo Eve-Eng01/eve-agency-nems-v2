@@ -208,7 +208,7 @@ A lilac panel with a circle, guides and nodes drawn behind one large sentence th
 
 ### Services
 
-Deep panel, centred title, then one lilac card per service: name, intro, deliverables with node bullets, timeline and starting price (tagged Sample), a link to ask, and the sample deliverable drawn on canvas. Once the big title passes under the nav, a slim bar pins below it with "Services", the card on top (03 / 08, Web and product) and a progress line; it fades as the last card leaves. Cards tighten on screens under 860px tall so the last one ends above the fold. Below 900px wide the cards flow in a column instead of stacking, because each is taller than a phone screen.
+Deep panel, centred title, then one lilac card per service: name, intro, deliverables with node bullets, timeline and the quote line ("Fixed, after a free call"), a link to ask, and the sample deliverable drawn on canvas. Once the big title passes under the nav, a slim bar pins below it with "Services", the card on top (03 / 08, Web and product) and a progress line; it fades as the last card leaves. Cards tighten on screens under 860px tall so the last one ends above the fold. Below 900px wide the cards flow in a column instead of stacking, because each is taller than a phone screen.
 
 ### Fitting the screen
 
@@ -216,7 +216,7 @@ Every section where something happens (the sketch scene, the service stack, the 
 
 ### Launch planner
 
-Purple panel. Example chips, a white pill input with the ink button, and four result cards: what we would build, a first look, how long, and where the price starts on aubergine with the main button.
+Purple panel. Example chips, a white pill input with the ink button, and four result cards: what we would build, a first look, how long, and the next step (a free call, then a fixed quote) on aubergine with the main button, "Get a quote".
 
 ### Footer
 
@@ -224,15 +224,15 @@ Deep panel. The call to book and three link columns, then "Eve Studio" in expand
 
 ### Buttons and tags
 
-Primary purple pill, ghost hairline pill, ink pill on purple grounds; all lift 2px on hover and press to 0.97. Every sample project and price carries a Sample tag; Eve carries Live and Dreambot carries Client work.
+Primary purple pill, ghost hairline pill, ink pill on purple grounds; all lift 2px on hover and press to 0.97. Every sample project carries a Sample tag; Eve carries Live and Dreambot carries Client work.
 
 ## Do's and Don'ts
 
 - Do keep the system cursor.
-- Do tag every invented project, quote and price as a sample.
+- Do tag every invented project as a sample. Show no prices: say "fixed quote" and offer "Get a quote".
 - Do hide a contact line until its real value exists; never print a placeholder or an `.example` address.
 - Do give each section its own picture: the work grid and the service cards draw different samples (the last two services still share theirs with Tolumi and Quillbay until there are more pieces).
 - Do keep "fixed quote" as the only phrase for the price promise.
 - Don't sell the head count; the people appear as who you work with.
 - Don't add gradients, glows behind type or a second accent hue.
-- Don't name team members or mention locations; prices are in USD.
+- Don't name team members or mention locations; never print a price.

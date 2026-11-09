@@ -4,24 +4,25 @@ import { ArrowRight, Check } from "@/components/icons";
 import { site } from "@/content/site";
 import { services } from "@/content/services";
 
-type Vals = { name: string; email: string; budget: string; service: string; idea: string };
+type Vals = { name: string; email: string; timing: string; service: string; idea: string };
 type Errs = Partial<Record<keyof Vals, string>>;
 
-const budgets = ["Under $2,500", "$2,500 to $7,500", "$7,500 to $20,000", "Over $20,000", "Not sure yet"];
+/* no prices anywhere: we ask when, not how much, and quote after the call */
+const timings = ["As soon as possible", "In the next 1 to 3 months", "In 3 to 6 months", "No date yet"];
 
 const validate = (v: Vals): Errs => {
   const e: Errs = {};
   if (!v.name.trim()) e.name = "Add your name so we know who to reply to.";
   if (!v.email.trim()) e.email = "Add your email so we can reply.";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) e.email = "That email looks incomplete. Check it has an @ and a domain.";
-  if (!v.budget) e.budget = "Pick a budget range. A rough one is fine.";
+  if (!v.timing) e.timing = "Pick when you need it. A rough guess is fine.";
   if (!v.service) e.service = "Pick the service closest to what you need.";
   if (!v.idea.trim()) e.idea = "Tell us the idea in a line. You can keep it rough.";
   return e;
 };
 
 export function BriefForm() {
-  const [v, setV] = useState<Vals>({ name: "", email: "", budget: "", service: "", idea: "" });
+  const [v, setV] = useState<Vals>({ name: "", email: "", timing: "", service: "", idea: "" });
   const [errs, setErrs] = useState<Errs>({});
   const [state, setState] = useState<"idle" | "sending" | "sent" | "failed">("idle");
 
@@ -46,8 +47,8 @@ export function BriefForm() {
     const first = Object.keys(es)[0];
     if (first) { document.getElementById(`f-${first}`)?.focus(); return; }
     if (!site.formEndpoint) {
-      const text = `Name: ${v.name}\nEmail: ${v.email}\nBudget: ${v.budget}\nService: ${v.service}\n\n${v.idea}`;
-      location.href = `mailto:${site.email}?subject=${encodeURIComponent(`Project brief from ${v.name}`)}&body=${encodeURIComponent(text)}`;
+      const text = `Name: ${v.name}\nEmail: ${v.email}\nWhen: ${v.timing}\nService: ${v.service}\n\n${v.idea}`;
+      location.href = `mailto:${site.email}?subject=${encodeURIComponent(`Quote request from ${v.name}`)}&body=${encodeURIComponent(text)}`;
       return;
     }
     setState("sending");
@@ -60,7 +61,7 @@ export function BriefForm() {
   if (state === "sent") {
     return (
       <div className="notice" role="status">
-        <p className="title-2"><Check size={20} weight="bold" aria-hidden="true" /> Brief sent</p>
+        <p className="title-2"><Check size={20} weight="bold" aria-hidden="true" /> Request sent</p>
         <p>Thanks, {v.name.split(" ")[0]}. A person on the team replies within one working day.</p>
       </div>
     );
@@ -82,10 +83,10 @@ export function BriefForm() {
         {field("email", "Work email", <input {...a("email")} type="email" autoComplete="email" />)}
       </div>
       <div className="form__row">
-        {field("budget", "Budget range", (
-          <select {...a("budget")}>
-            <option value="">Choose a range</option>
-            {budgets.map((b) => <option key={b} value={b}>{b}</option>)}
+        {field("timing", "When do you need it?", (
+          <select {...a("timing")}>
+            <option value="">Choose a time</option>
+            {timings.map((b) => <option key={b} value={b}>{b}</option>)}
           </select>
         ))}
         {field("service", "Service", (
@@ -97,10 +98,10 @@ export function BriefForm() {
         ))}
       </div>
       {field("idea", "Your idea, in one line", <textarea {...a("idea")} rows={3} />)}
-      {state === "failed" && <p className="field__err" role="alert">Your brief did not send. Check your connection and try again, or email us instead.</p>}
+      {state === "failed" && <p className="field__err" role="alert">Your request did not send. Check your connection and try again, or email us instead.</p>}
       <div className="form__send">
         <button className="btn btn--primary" disabled={state === "sending"}>
-          {state === "sending" ? "Sending your brief" : <>Send your brief <ArrowRight size={16} weight="bold" aria-hidden="true" /></>}
+          {state === "sending" ? "Sending your request" : <>Get a quote <ArrowRight size={16} weight="bold" aria-hidden="true" /></>}
         </button>
         <span className="muted">A person replies within one working day.</span>
       </div>

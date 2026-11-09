@@ -8,7 +8,7 @@ export default function Privacy() {
     <section className="legal">
       <div className="wrap prose">
         <h1 className="heading-3">Privacy</h1>
-        <p>When you send a brief or book a call, we keep your name, email, budget range and project idea so we can reply and run the project.</p>
+        <p>When you send a brief or book a call, we keep your name, email, launch timing and project idea so we can reply and run the project.</p>
         <h2 className="heading-5">What we collect</h2>
         <p>Only what you type into our forms or booking page. This site sets no advertising cookies.</p>
         <h2 className="heading-5">Who sees it</h2>

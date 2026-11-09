@@ -191,7 +191,7 @@ export function Footer() {
         <div className="foot__top">
           <div className="foot__cta">
             <h2 className="title title--md">Have a launch coming?</h2>
-            <p className="foot__lead">Book a free 30 minute call. You leave with a scope, a price range and a start date, whether or not you hire&nbsp;us.</p>
+            <p className="foot__lead">Book a free 30 minute call. You leave with a scope and a start date, and get a fixed quote before you&nbsp;decide.</p>
             <div className="foot__actions">
               <Link href="/contact/" className="btn btn--primary btn--lg">Book a free call <ArrowRight size={18} weight="bold" aria-hidden="true" /></Link>
               <CopyEmail />

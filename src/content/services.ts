@@ -8,7 +8,6 @@ export type Service = {
   intro: string;
   deliverables: string[];
   timeline: string;
-  from: string;
   art: ArtId;
   /* a real picture of the work, used in place of the drawn sample when set */
   pic?: Pic;
@@ -16,7 +15,7 @@ export type Service = {
   steps: { title: string; body: string }[];
 };
 
-/* Prices and timelines are samples, tagged in the interface. Replace before launch. */
+/* No prices on the site: every project gets a fixed quote after a free call. Timelines are typical, not promises. */
 export const services: Service[] = [
   {
     slug: "ai-apps",
@@ -25,7 +24,6 @@ export const services: Service[] = [
     intro: "We build AI features people trust at work: they read your documents, draft the routine parts and hand the hard calls to a person.",
     deliverables: ["Model testing on your real data", "Review screens with human sign-off", "Web or mobile app", "Usage and cost reporting"],
     timeline: "6 to 10 weeks",
-    from: "$7,500",
     art: "dash",
     caseSlug: "zuriko",
     steps: [
@@ -41,7 +39,6 @@ export const services: Service[] = [
     intro: "One codebase for iOS and Android, tested on average phones and patchy networks, and submitted to both stores by us.",
     deliverables: ["Product design and prototype", "iOS and Android build", "Store listing and submission", "Crash and usage reporting"],
     timeline: "8 to 14 weeks",
-    from: "$9,500",
     art: "eve-events",
     caseSlug: "eve",
     steps: [
@@ -57,7 +54,6 @@ export const services: Service[] = [
     intro: "Fast sites your team can update on their own, and web products with the accounts, payments and admin screens you actually need.",
     deliverables: ["Design system", "Next.js build", "CMS your team can edit", "Analytics with conversion events"],
     timeline: "4 to 10 weeks",
-    from: "$3,500",
     art: "palm-detail",
     caseSlug: "palmgate",
     steps: [
@@ -73,7 +69,6 @@ export const services: Service[] = [
     intro: "A logo that holds from a billboard down to a 16px browser tab, with the colours, type and templates to use it well once we're gone.",
     deliverables: ["Logo and mark in every format", "Colour and type system", "Packaging or deck templates", "A short brand guide"],
     timeline: "3 to 6 weeks",
-    from: "$2,000",
     art: "logo",
     pic: { src: "/work/dreambot-system.jpg", src800: "/work/dreambot-system-800.jpg", alt: "The Dreambot identity: logo, six colours, the symbol at every size and two typefaces" },
     caseSlug: "dreambot",
@@ -90,7 +85,6 @@ export const services: Service[] = [
     intro: "We plan the launch, make the assets and run the ads. Every Friday you get one number and what we're changing because of it.",
     deliverables: ["Launch plan", "Campaign creative", "Paid social and search", "A weekly report with one number"],
     timeline: "From 4 weeks, then monthly",
-    from: "$1,500",
     art: "campaign",
     caseSlug: "tolumi",
     steps: [
@@ -106,7 +100,6 @@ export const services: Service[] = [
     intro: "Short films that show the product doing its job, cut for your website, sales deck and social feeds.",
     deliverables: ["Script and storyboard", "Animation and sound", "Cuts for web and social", "Source files"],
     timeline: "3 to 6 weeks",
-    from: "$1,800",
     art: "motion",
     caseSlug: "quillbay",
     steps: [
@@ -122,7 +115,6 @@ export const services: Service[] = [
     intro: "Real customers on their own phones, plus AI video for product shots and fast hook tests. Delivered as a monthly batch, ready to run.",
     deliverables: ["Creator casting and briefs", "UGC filming and editing", "AI product video", "Captions and every ad size"],
     timeline: "2 weeks, then monthly",
-    from: "$1,000",
     art: "ugc",
     caseSlug: "tolumi",
     steps: [
@@ -138,7 +130,6 @@ export const services: Service[] = [
     intro: "A named project lead who owns the plan, including any suppliers you already have. Take it alone or with any other service.",
     deliverables: ["One shared roadmap", "A weekly review", "Supplier coordination", "A written decision log"],
     timeline: "Length of your project",
-    from: "$750 a month",
     art: "roadmap",
     caseSlug: "quillbay",
     steps: [

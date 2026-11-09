@@ -9,14 +9,14 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Book a free call",
-  description: "Book a free 30 minute call with Eve Studio. You leave with a scope, a price range and a start date for your app, website, brand or launch, whether or not you hire us.",
-  ...share("/contact/", "Book a free call | Eve Studio", "Thirty minutes, free. Leave with a scope, a price range and a start date for your app, website, brand or launch."),
+  description: "Book a free 30 minute call with Eve Studio. You leave with a scope and a start date for your app, website, brand or launch, and get a fixed quote before you decide.",
+  ...share("/contact/", "Book a free call | Eve Studio", "Thirty minutes, free. Leave with a scope, a start date and then a fixed quote for your app, website, brand or launch."),
 };
 
 export default function Contact() {
   return (
     <>
-      <PageHero title="Book a free call" lead="Thirty minutes, free. You leave with a scope, a price range and a start date, whether or not we work together." />
+      <PageHero title="Book a free call" lead="Thirty minutes, free. You leave with a scope and a start date, and get a fixed quote before you decide." />
       <section className="contact">
         <div className="wrap contact__grid">
           <section id="book" aria-labelledby="book-h" className="contact__book">
@@ -28,8 +28,8 @@ export default function Contact() {
               <iframe src={site.booking} title="Book a call with Eve Studio" loading="lazy" className="contact__frame" />
             ) : !site.emailReady ? (
               <div className="notice">
-                <p>Online booking opens soon. Until then, send the short brief and we reply within a working day with times for your call.</p>
-                <a className="btn btn--primary" href="#brief">Send a brief <ArrowRight size={18} weight="bold" aria-hidden="true" /></a>
+                <p>Online booking opens soon. Until then, ask for a quote below and we reply within a working day with times for your call.</p>
+                <a className="btn btn--primary" href="#brief">Ask for a quote <ArrowRight size={18} weight="bold" aria-hidden="true" /></a>
               </div>
             ) : (
               <div className="notice">
@@ -42,8 +42,8 @@ export default function Contact() {
           </section>
           <section id="brief" aria-labelledby="brief-h" className="contact__brief">
             <div>
-              <h2 id="brief-h" className="h-5">Or send a brief</h2>
-              <p className="contact__note">Rather write it down first? Send a line about the idea and we reply within one working day.</p>
+              <h2 id="brief-h" className="h-5">Or ask for a quote</h2>
+              <p className="contact__note">Rather write it down first? Tell us the idea in a line and when you need it. We reply within one working day.</p>
             </div>
             <BriefForm />
           </section>

@@ -72,7 +72,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         <div className="wrap case__nextgrid">
           <div>
             <h2 className="h-3" data-split>Want something like this?</h2>
-            <p className="lead">{svc ? `${svc.name} starts from ${svc.from}. ` : ""}Book thirty minutes and leave with a scope, a price range and a start date.</p>
+            <p className="lead">Book thirty minutes and leave with a scope and a start date{svc ? ` for your ${svc.name.toLowerCase()} project` : ""}. A fixed quote follows before any work starts.</p>
             <Link href={`/contact/${svc ? `?service=${svc.slug}` : ""}`} className="btn btn--primary">Book a call <ArrowRight size={18} weight="bold" aria-hidden="true" /></Link>
           </div>
           <Link href={`/work/${next.slug}/`} className="case__nextlink">

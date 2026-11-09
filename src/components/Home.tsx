@@ -216,7 +216,7 @@ export function Services() {
       <div className="wrap">
         <header className="svc__head">
           <h2 id="svc-h" className="title" data-split>Services</h2>
-          <p className="svc__lead">Take one or take them all. Every project starts with a fixed quote, and the prices below are where each one&nbsp;starts.</p>
+          <p className="svc__lead">Take one or take them all. Every project starts with a free call and a fixed quote, agreed before any work&nbsp;begins.</p>
         </header>
         <div className="svc__body">
         <div className={bar ? "svc__bar is-on" : "svc__bar"} aria-hidden="true">
@@ -233,7 +233,7 @@ export function Services() {
                 <ul className="scard__del">{x.deliverables.map((d) => <li key={d}>{d}</li>)}</ul>
                 <dl className="scard__facts">
                   <div><dt>Timeline</dt><dd>{x.timeline}</dd></div>
-                  <div><dt>From</dt><dd>{x.from} <span className="tag">Sample</span></dd></div>
+                  <div><dt>Quote</dt><dd>Fixed, after a free call</dd></div>
                 </dl>
                 <Link href={`/contact/?service=${x.slug}`} className="link">Ask about {ask(x.name)} <ArrowRight size={16} weight="bold" aria-hidden="true" /></Link>
               </div>
@@ -296,7 +296,7 @@ export function Team() {
   );
 }
 
-/* Idea to plan: type what you are launching and see what we would build, how long, and where the price starts. */
+/* Idea to plan: type what you are launching and see what we would build, how long, and how to get a quote. */
 const RULES: [RegExp, string][] = [
   [/\b(ai|gpt|assistant|automat|chatbot|model)/i, "ai-apps"],
   [/\b(app|ios|android|mobile)/i, "mobile-apps"],
@@ -336,7 +336,7 @@ export function PlanIt() {
         <div className="planit__head">
         <div>
         <h2 id="plan-h" className="title title--md" data-split>What are you launching?</h2>
-        <p className="planit__lead">Pick one or type your own. You will see what we would build, how long it takes and where the price starts, before you book&nbsp;anything.</p>
+        <p className="planit__lead">Pick one or type your own. You will see what we would build and how long it takes, before you book&nbsp;anything.</p>
         </div>
         <div>
         <div className="planit__chips">
@@ -363,10 +363,10 @@ export function PlanIt() {
             <ul>{plan.s.steps.map((x) => <li key={x.title}>{x.title}</li>)}</ul>
           </div>
           <div className="pcard pcard--price">
-            <h3>Where the price starts</h3>
-            <p className="pcard__big">from {plan.s.from}</p>
-            <p className="pcard__note">A sample price. You get a fixed quote after the call.</p>
-            <Link href={`/contact/?service=${plan.s.slug}&idea=${encodeURIComponent(plan.idea)}`} className="btn btn--primary">Book a call about this <ArrowRight size={18} weight="bold" aria-hidden="true" /></Link>
+            <h3>Next step</h3>
+            <p className="pcard__big">A free call</p>
+            <p className="pcard__note">Thirty minutes to agree the scope. You get a fixed quote before any work starts.</p>
+            <Link href={`/contact/?service=${plan.s.slug}&idea=${encodeURIComponent(plan.idea)}`} className="btn btn--primary">Get a quote <ArrowRight size={18} weight="bold" aria-hidden="true" /></Link>
           </div>
         </div>
       </div>

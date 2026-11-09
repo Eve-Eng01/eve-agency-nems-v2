@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#ffffff" };
 
-/* who the studio is and what it offers, for search engines. No prices here: the ones on the page are samples. */
+/* who the studio is and what it offers, for search engines. No prices: projects are quoted after a call. */
 const ld = {
   "@context": "https://schema.org",
   "@graph": [
