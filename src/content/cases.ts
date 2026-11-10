@@ -3,6 +3,9 @@ import type { ArtId } from "@/art/draw";
 /* A real picture of the work (used in place of a drawn sample when present) */
 export type Pic = { src: string; src800: string; alt: string };
 
+/* A finished render of the work in use, shown in the gallery on the project page */
+export type Shot = { src: string; alt: string; label: string; w: number; h: number };
+
 export type Metric = { value: number; prefix?: string; suffix?: string; decimals?: number; label: string };
 
 export type CaseStudy = {
@@ -18,6 +21,8 @@ export type CaseStudy = {
   art2: ArtId;
   pic?: Pic;
   pic2?: Pic;
+  /* rows of renders; each row shares one height, so nothing is cropped */
+  gallery?: Shot[][];
   challenge: string;
   approach: string[];
   outcome: string;
@@ -74,6 +79,12 @@ export const cases: CaseStudy[] = [
     art: "brand",
     art2: "logo",
     pic: { src: "/work/dreambot-hero.jpg", src800: "/work/dreambot-hero-800.jpg", alt: "The Dreambot logo over Overnight Drift, a generative pattern of blue traces drifting toward an orange sun at the horizon" },
+    gallery: [
+      [{ src: "/work/dreambot/dreambot-laptop.webp", label: "Website", alt: "A laptop on a white stone plinth showing the Dreambot website", w: 1400, h: 933 }, { src: "/work/dreambot/dreambot-billboard.webp", label: "Billboard", alt: "A lit Dreambot billboard on a steel frame at night", w: 1400, h: 1750 }, { src: "/work/dreambot/dreambot-phone.webp", label: "Product", alt: "Two phones: the overnight run report and a lock screen with a Dreambot notification", w: 1400, h: 1050 }],
+      [{ src: "/work/dreambot/dreambot-cards.webp", label: "Business cards", alt: "Three Dreambot business cards floating over a pale blue ground", w: 1400, h: 1050 }, { src: "/work/dreambot/dreambot-posters.webp", label: "Posters", alt: "Four Dreambot posters on a dark street wall", w: 1400, h: 875 }, { src: "/work/dreambot/dreambot-sculpture.webp", label: "Symbol", alt: "The Daybreak D symbol as a solid navy object with an orange sun", w: 1400, h: 1050 }],
+      [{ src: "/work/dreambot/dreambot-stationery.webp", label: "Stationery", alt: "Letterhead, notebook, envelope, business cards and a pen laid flat", w: 1400, h: 1050 }, { src: "/work/dreambot/dreambot-sign.webp", label: "Signage", alt: "The Dreambot logo as an illuminated sign on a dark wall", w: 1400, h: 875 }, { src: "/work/dreambot/dreambot-appicon.webp", label: "App icon", alt: "The Dreambot app icon as a solid rounded tile", w: 1400, h: 1050 }],
+      [{ src: "/work/dreambot/dreambot-cups.webp", label: "Cups", alt: "Three Dreambot paper cups", w: 1400, h: 1050 }, { src: "/work/dreambot/dreambot-boxes.webp", label: "Welcome kit", alt: "A stack of Dreambot welcome kit boxes", w: 1400, h: 1050 }, { src: "/work/dreambot/dreambot-badge.webp", label: "Event badges", alt: "Two Dreambot event badges on lanyards", w: 1400, h: 1050 }],
+    ],
     pic2: { src: "/work/dreambot-system.jpg", src800: "/work/dreambot-system-800.jpg", alt: "The Dreambot identity: the stacked logo on Night, six brand colours, the Daybreak D symbol from app icon down to 16px, and the two typefaces" },
     challenge:
       "Dreambot's agents find buyers, write to each one and handle replies while the team sleeps. The brand had to feel safe to trust with a company's inbox, not like another bot, for founders and growth leads at B2B companies of 10 to 200 people.",

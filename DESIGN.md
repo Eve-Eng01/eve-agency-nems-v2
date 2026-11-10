@@ -214,6 +214,10 @@ Deep panel, centred title, then one lilac card per service: name, intro, deliver
 
 Every section where something happens (the sketch scene, the service stack, the team, the launch planner, the questions) keeps its heading in view while you use it. The sketch scene sits between the nav and the bottom edge at any height: the phone scales down with the screen height and, under 880px tall, only the current step opens. The team title and lead share a row and the figures scale with the height. On wide screens the planner's title sits beside its chips and field, so question, choices and answer share one screen. The questions heading stays pinned beside the list. The nav height is the `--nav-h` token (72px, 64px on phones), which every pinned offset uses.
 
+### Project gallery
+
+A project with finished renders (Dreambot) gets "The identity in use" after its story: rows of three renders that share one height, each tile growing by its own aspect ratio, so nothing is cropped. Tiles rise in row by row once; on hover a tile lifts 2px, its picture zooms to 1.03 inside the frame and a dark pill names it (always shown on phones, where the rows stack). Any tile opens a full screen viewer (a modal dialog): arrow keys, the buttons or a swipe move between all twelve, Escape, the close button or the backdrop close it, smooth scroll pauses while it is open and focus returns to the tile.
+
 ### Launch planner
 
 Purple panel. Example chips, a white pill input with the ink button, and four result cards: what we would build, a first look, how long, and the next step (a free call, then a fixed quote) on aubergine with the main button, "Get a quote".

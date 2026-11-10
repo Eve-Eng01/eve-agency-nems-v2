@@ -8,6 +8,7 @@ import { share } from "@/lib/share";
 import { PageHero } from "@/components/PageHero";
 import { ArtFrame } from "@/components/ArtFrame";
 import { WorkPic } from "@/components/WorkPic";
+import { CaseGallery } from "@/components/CaseGallery";
 import { site } from "@/content/site";
 
 export const dynamicParams = false;
@@ -68,6 +69,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           ? <div className="wrap"><div className="case__art" data-reveal><WorkPic pic={c.pic2} art={c.art2} sizes="(min-width: 760px) calc(100vw - 96px), 100vw" describe /></div></div>
           : c.sample && <div className="wrap"><div className="case__art" data-reveal><ArtFrame id={c.art2} /></div></div>}
       </section>
+      {c.gallery && <CaseGallery rows={c.gallery} client={c.client} />}
       <section className="case__next">
         <div className="wrap case__nextgrid">
           <div>
