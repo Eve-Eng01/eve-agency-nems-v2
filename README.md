@@ -24,7 +24,7 @@ Set these in `.env.local` (see `.env.example`):
 - `NEXT_PUBLIC_FORM_ENDPOINT`: where the brief form posts. Until then it opens an email.
 - `NEXT_PUBLIC_WHATSAPP`, and socials in `src/content/site.ts` (they also feed the structured data as `sameAs`).
 
-Replace the samples in `src/content/`: every project but Eve and Dreambot, and every figure on them are invented and tagged as samples on the page. Eve (our product) and Dreambot (client work) are real. A real project gets real pictures through `pic` and `pic2` in `cases.ts` (1600 and 800 wide, 16:10, in `public/work/`).
+Replace the samples in `src/content/`: every project but Eve, Dreambot and Ufundi, and every figure on them are invented and tagged as samples on the page. Eve (our product), Dreambot and Ufundi (client work) are real. A project can also carry a screen recording (`video`) and a gallery of renders (`gallery`). A real project gets real pictures through `pic` and `pic2` in `cases.ts` (1600 and 800 wide, 16:10, in `public/work/`).
 
 ## Search
 

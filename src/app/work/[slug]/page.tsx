@@ -9,6 +9,7 @@ import { PageHero } from "@/components/PageHero";
 import { ArtFrame } from "@/components/ArtFrame";
 import { WorkPic } from "@/components/WorkPic";
 import { CaseGallery } from "@/components/CaseGallery";
+import { CaseVideo } from "@/components/CaseVideo";
 import { site } from "@/content/site";
 
 export const dynamicParams = false;
@@ -43,7 +44,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         lead={c.summary}
         kicker={<><span className={c.sample ? "tag" : "tag tag--live"}>{caseKind(c)}</span><span>{c.sector}</span><span>{c.tags.join(", ")}</span></>}
       >
-        {c.live && <a className="btn btn--primary" href={c.live} target="_blank" rel="noreferrer">Visit joineve.app <ArrowUpRight size={18} weight="bold" aria-hidden="true" /></a>}
+        {c.live && <a className="btn btn--primary" href={c.live} target="_blank" rel="noreferrer">Visit {c.liveLabel ?? "the site"} <ArrowUpRight size={18} weight="bold" aria-hidden="true" /></a>}
       </PageHero>
       <div className="wrap">
         <div className="case__hero" data-reveal>
@@ -60,7 +61,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           <h2 className="h-5">What it did</h2>
           <div>
             <p className="case__lead">{c.outcome}</p>
-            {!c.live && <ul className="case__metrics">{c.metrics.map((m) => <li key={m.label}><b>{formatMetric(m)}</b> {m.label}</li>)}</ul>}
+            {(!c.live || c.showMetrics) && <ul className="case__metrics">{c.metrics.map((m) => <li key={m.label}><b>{formatMetric(m)}</b> {m.label}</li>)}</ul>}
             <p className="case__dur">{c.when ?? `Time: ${c.duration}`}</p>
           </div>
         </div>
@@ -69,7 +70,12 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           ? <div className="wrap"><div className="case__art" data-reveal><WorkPic pic={c.pic2} art={c.art2} sizes="(min-width: 760px) calc(100vw - 96px), 100vw" describe /></div></div>
           : c.sample && <div className="wrap"><div className="case__art" data-reveal><ArtFrame id={c.art2} /></div></div>}
       </section>
-      {c.gallery && <CaseGallery rows={c.gallery} client={c.client} />}
+      {c.video && (
+        <section className="case__vid" aria-label="Walkthrough recording">
+          <div className="wrap"><CaseVideo {...c.video} /></div>
+        </section>
+      )}
+      {c.gallery && <CaseGallery rows={c.gallery} client={c.client} title={c.galleryTitle} lead={c.galleryLead} />}
       <section className="case__next">
         <div className="wrap case__nextgrid">
           <div>

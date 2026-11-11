@@ -41,7 +41,7 @@ From idea to launch day. The product, the brand and the campaign get planned tog
 
 ## Evidence on Hand
 
-Eve (joineve.app) is real and live, shown with real screenshots. Dreambot is real client work (a brand identity for an AI lead generation platform, delivered November 2026), shown with pictures made from its own logo kit and pattern. Every other client and figure is an invented sample and is tagged as one in the interface.
+Eve (joineve.app) is real and live, shown with real screenshots. Dreambot is real client work (a brand identity for an AI lead generation platform, delivered November 2026), shown with pictures made from its own logo kit and pattern. Ufundi is real client work too: a live website for an Abuja home builder (ufundi-kappa.vercel.app), shown with its mockups and a walkthrough recording. Every other client and figure is an invented sample and is tagged as one in the interface.
 
 ## Product Principles
 

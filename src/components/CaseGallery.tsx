@@ -7,7 +7,7 @@ import { lenis } from "./Smooth";
 /* The identity in use: rows of renders that share one height (each tile grows by its aspect ratio,
    so nothing is cropped). Tiles rise in once, zoom a touch and show their name on hover, and open
    in a full screen viewer: arrows or a swipe to move, Escape or the backdrop to close. */
-export function CaseGallery({ rows, client }: { rows: Shot[][]; client: string }) {
+export function CaseGallery({ rows, client, title = "The identity in use", lead }: { rows: Shot[][]; client: string; title?: string; lead?: string }) {
   const all = rows.flat();
   const root = useRef<HTMLElement>(null);
   const dlg = useRef<HTMLDialogElement>(null);
@@ -60,8 +60,8 @@ export function CaseGallery({ rows, client }: { rows: Shot[][]; client: string }
     <section ref={root} className="gal" aria-labelledby="gal-h">
       <div className="wrap">
         <header className="gal__head">
-          <h2 id="gal-h" className="h-5">The identity in use</h2>
-          <p className="case__lead">Twelve renders of {client} at work, from business cards to a billboard. Open any one to see it full size.</p>
+          <h2 id="gal-h" className="h-5">{title}</h2>
+          <p className="case__lead">{lead ?? `Twelve renders of ${client} at work, from business cards to a billboard. Open any one to see it full size.`}</p>
         </header>
         <div className="gal__rows">
           {rows.map((row, r) => (

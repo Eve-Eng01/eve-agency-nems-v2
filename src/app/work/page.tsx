@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function WorkIndex() {
   return (
     <>
-      <PageHero title="The work" lead="Dreambot is client work and Eve is our own product, live now. The other four are sample projects that show how we work, until more client work is cleared to publish." />
+      <PageHero title="The work" lead="Dreambot and Ufundi are client work, and Eve is our own product, live now. The other three are sample projects that show how we work, until more client work is cleared to publish." />
       <section className="wgrid" aria-label="All projects">
         <div className="wrap wgrid__in">
           {cases.map((c, i) => (
@@ -29,7 +29,7 @@ export default function WorkIndex() {
                 <ArrowUpRight size={22} weight="bold" aria-hidden="true" />
               </span>
               <span className="wcard__sum">{c.summary}</span>
-              <span className="wcard__res">{c.live ? "Live at joineve.app" : `${formatMetric(c.headline)} ${c.headline.label}`}</span>
+              <span className="wcard__res">{c.live ? `Live at ${c.live.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}` : `${formatMetric(c.headline)} ${c.headline.label}`}</span>
             </Link>
           ))}
         </div>

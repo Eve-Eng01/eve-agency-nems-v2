@@ -31,9 +31,19 @@ export type CaseStudy = {
   when?: string;
   sample: boolean;
   live?: string;
+  /* the address as shown on the button, e.g. "joineve.app" */
+  liveLabel?: string;
+  /* overrides the kind shown on the project page, e.g. "Live website" */
+  kind?: string;
+  /* show the figures even though the project is live */
+  showMetrics?: boolean;
+  /* a screen recording shown after the story */
+  video?: { src: string; poster: string; label: string };
+  galleryTitle?: string;
+  galleryLead?: string;
 };
 
-/* Eve (our own product) and Dreambot (client work) are real. Every other case is an invented sample, tagged in the interface. */
+/* Eve (our own product), Dreambot and Ufundi (client work) are real. Every other case is an invented sample, tagged in the interface. */
 export const cases: CaseStudy[] = [
   {
     slug: "eve",
@@ -62,6 +72,7 @@ export const cases: CaseStudy[] = [
     duration: "Ongoing",
     sample: false,
     live: "https://www.joineve.app/",
+    liveLabel: "joineve.app",
   },
   {
     slug: "dreambot",
@@ -100,6 +111,47 @@ export const cases: CaseStudy[] = [
     sample: false,
   },
   {
+    slug: "ufundi",
+    client: "Ufundi",
+    sector: "Residential real estate",
+    services: ["web-and-product"],
+    tags: ["Website", "Front end build", "Motion"],
+    summary: "A website for an Abuja home builder that walks you through a villa as you scroll.",
+    headline: { value: 300, label: "frame villa tour, controlled by scrolling" },
+    metrics: [
+      { value: 300, label: "frames in the walkthrough, drawn to a canvas and tied to scroll" },
+      { value: 4, label: "rooms where the tour rests, so none can be skipped" },
+      { value: 4, label: "Abuja neighbourhoods on a living map drawn in code" },
+    ],
+    art: "website",
+    art2: "palm-detail",
+    pic: { src: "/work/ufundi/ufundi-laptop.webp", src800: "/work/ufundi/ufundi-laptop.webp", alt: "The Ufundi homepage on a laptop standing on a travertine block" },
+    pic2: { src: "/work/ufundi/ufundi-grid.webp", src800: "/work/ufundi/ufundi-grid.webp", alt: "Nine screens of the Ufundi website laid out as a tilted grid" },
+    video: { src: "/work/ufundi/ufundi-walkthrough-scroll.webm", poster: "/work/ufundi/ufundi-walkthrough-poster.jpg", label: "Screen recording: scrolling through the Ufundi villa walkthrough, from the lawn to the master suite" },
+    galleryTitle: "The site on every screen",
+    galleryLead: "Five more views of Ufundi, on phones and desktops. Open any one to see it full size.",
+    gallery: [
+      [{ src: "/work/ufundi/ufundi-phones.webp", label: "Phones", alt: "Three phones showing the Ufundi hero, residences and locations", w: 1600, h: 1200 }, { src: "/work/ufundi/ufundi-mobile-row.webp", label: "Mobile screens", alt: "Five Ufundi phone screens in a staggered row", w: 1600, h: 1000 }],
+      [{ src: "/work/ufundi/ufundi-cascade.webp", label: "Desktop screens", alt: "Three Ufundi desktop screens stepping forward on a dark ground", w: 1600, h: 1200 }, { src: "/work/ufundi/ufundi-duo.webp", label: "Laptop and phone", alt: "A laptop showing the master suite stop beside a phone showing the hero", w: 1600, h: 1067 }, { src: "/work/ufundi/ufundi-stand.webp", label: "Last stop", alt: "A phone on a travertine slab showing the last stop of the tour", w: 1600, h: 1200 }],
+    ],
+    challenge:
+      "Ufundi designs and builds contemporary homes in Abuja for buyers in Nigeria and abroad, and many of those buyers can't visit before they commit. The site had to do the job of a first viewing: show the finish, explain how Ufundi builds, and make booking a viewing the obvious next step.",
+    approach: [
+      "We made the first screen a walkthrough you control by scrolling: 300 frames of a villa tour, from the front lawn through the living room, kitchen and hallway to the master suite.",
+      "The tour rests at four rooms with a short note at each, and a fast scroll eases to a stop, so every room gets its moment. The nav shows the tour's chapters, then turns into the site's links when it ends.",
+      "Residences run as a pinned horizontal track on desktop and a native swipe on phones, and the four neighbourhoods sit on a contour map drawn in code that shifts to the one you pick.",
+      "We made buying plain, including from abroad: four steps, the payment plan as a simple bar, and a panel for diaspora buyers on video viewings, title documents and working with their lawyer.",
+    ],
+    outcome: "The site is live. Every section leads to one action, booking a private viewing, and the tour loads light frames first and sharpens them when the camera rests, so it starts fast and stays crisp.",
+    duration: "",
+    when: "Hand written HTML, CSS and JavaScript with Lenis smooth scroll, hosted on Vercel. 2026.",
+    sample: false,
+    live: "https://ufundi-kappa.vercel.app/",
+    liveLabel: "the Ufundi site",
+    kind: "Live website",
+    showMetrics: true,
+  },
+  {
     slug: "zuriko",
     client: "Zuriko",
     sector: "Accounting software",
@@ -123,32 +175,6 @@ export const cases: CaseStudy[] = [
     ],
     outcome: "Bookkeepers now review invoices instead of typing them. The first paying customer went live in week seven.",
     duration: "7 weeks",
-    sample: true,
-  },
-  {
-    slug: "palmgate",
-    client: "Palmgate Lettings",
-    sector: "Property",
-    services: ["web-and-product", "brand-and-logo"],
-    tags: ["Website", "Brand"],
-    summary: "A lettings site where every listing shows the full monthly cost, with viewings booked online.",
-    headline: { value: 41, suffix: "%", label: "more enquiries in the first quarter" },
-    metrics: [
-      { value: 41, suffix: "%", label: "more enquiries in the first quarter" },
-      { value: 1.4, suffix: "s", decimals: 1, label: "largest paint on an average phone" },
-      { value: 6, suffix: " weeks", label: "from first meeting to live" },
-    ],
-    art: "website",
-    art2: "palm-detail",
-    challenge:
-      "Palmgate's listings lived on three portals and a WhatsApp group. Prices were out of date, and agents spent their mornings answering the same questions.",
-    approach: [
-      "We moved every listing into one simple CMS the agents could update from their phones.",
-      "We put monthly rent, the agency fee and the deposit on every listing, so visitors see the full cost upfront.",
-      "We replaced the phone queue with online viewing slots that sync to each agent's calendar.",
-    ],
-    outcome: "Enquiries rose 41%, and agents reported far fewer calls from people the property could not suit.",
-    duration: "6 weeks",
     sample: true,
   },
   {
@@ -207,7 +233,7 @@ export const cases: CaseStudy[] = [
 
 /* how the interface labels a case */
 export const caseTag = (c: CaseStudy) => (c.sample ? "Sample" : c.live ? "Live" : "Client work");
-export const caseKind = (c: CaseStudy) => (c.sample ? "Sample project" : c.live ? "Live product" : "Client project");
+export const caseKind = (c: CaseStudy) => c.kind ?? (c.sample ? "Sample project" : c.live ? "Live product" : "Client project");
 
 export const getCase = (slug: string) => cases.find((c) => c.slug === slug);
 

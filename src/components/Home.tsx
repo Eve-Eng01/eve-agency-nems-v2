@@ -73,7 +73,7 @@ export function Work() {
       <div className="wrap">
         <header className="work__head">
           <h2 id="work-h" className="title" data-split>Selected work</h2>
-          <p className="work__note">Dreambot, a brand for an AI startup, Eve, our own live product, and sample projects that show how we work.</p>
+          <p className="work__note">Dreambot, a brand for an AI startup, Ufundi, a live website for a home builder, Eve, our own product, and sample projects that show how we work.</p>
         </header>
         <ul className="work__grid">
           {WORK.map((c, n) => (

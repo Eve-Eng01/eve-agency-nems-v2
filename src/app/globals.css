@@ -593,3 +593,12 @@ img.art { height: auto; object-fit: cover; }
 .lb__btn svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 @media (hover: hover) and (pointer: fine) { .lb__btn:hover { background: rgba(255, 255, 255, 0.1); } }
 @media (prefers-reduced-motion: reduce) { .lb__fig { animation: none; } .gal__tile, .gal__tile img, .gal__tag { transition: none; } }
+
+/* project screen recording */
+.case__vid { padding-bottom: var(--section); }
+.cvid { position: relative; border-radius: 24px; overflow: hidden; background: var(--deep); aspect-ratio: 16 / 10; }
+.cvid video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cvid__btn { position: absolute; right: var(--s-200); bottom: var(--s-200); width: 48px; height: 48px; border-radius: 999px; display: grid; place-items: center; background: rgba(15, 11, 30, 0.72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: scale 160ms ease-out, background-color 200ms ease; }
+.cvid__btn:active { scale: 0.94; }
+.cvid__btn svg { width: 20px; height: 20px; fill: #fff; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+@media (hover: hover) and (pointer: fine) { .cvid__btn:hover { background: rgba(15, 11, 30, 0.9); } }

@@ -55,7 +55,8 @@ export const services: Service[] = [
     deliverables: ["Design system", "Next.js build", "CMS your team can edit", "Analytics with conversion events"],
     timeline: "4 to 10 weeks",
     art: "palm-detail",
-    caseSlug: "palmgate",
+    pic: { src: "/work/ufundi/ufundi-phones.webp", src800: "/work/ufundi/ufundi-phones.webp", alt: "Three phones showing the Ufundi website" },
+    caseSlug: "ufundi",
     steps: [
       { title: "Write the page first", body: "We start from what your buyer asks, then design around those answers." },
       { title: "Build on real content", body: "No placeholder text. You see your own words from the first review." },
