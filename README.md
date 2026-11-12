@@ -1,4 +1,4 @@
-# Eve Studio, light
+# Eve Studio, light mode
 
 The white version of the Eve Studio site. The dark cinematic version lives in `../new-site/` and the original site in the parent folder; neither is touched by this one.
 
